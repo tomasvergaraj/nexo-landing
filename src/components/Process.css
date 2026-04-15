@@ -1,0 +1,111 @@
+.process {
+  background: var(--black);
+}
+
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.process__card {
+  background: var(--black-card);
+  border: 1px solid var(--black-border);
+  border-radius: 12px;
+  padding: 32px 26px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.process__card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process__card:hover {
+  border-color: var(--blue-border);
+  box-shadow: var(--shadow-card);
+}
+
+.process__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.process__card-number {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, rgba(26, 171, 240, 0.15) 0%, rgba(26, 171, 240, 0.04) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  transition: all var(--transition-base);
+}
+
+.process__card:hover .process__card-number {
+  background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.process__card-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 171, 240, 0.07);
+  border: 1px solid var(--blue-border);
+  border-radius: 10px;
+  color: var(--blue);
+  transition: all var(--transition-base);
+}
+
+.process__card:hover .process__card-icon {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  color: var(--white);
+  border-color: transparent;
+}
+
+.process__card-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+}
+
+.process__card-desc {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .process__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .process__grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .process__card {
+    padding: 24px 20px;
+  }
+}

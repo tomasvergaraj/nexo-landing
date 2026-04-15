@@ -1,0 +1,211 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: all var(--transition-base);
+}
+
+.navbar--scrolled {
+  background: var(--navbar-scrolled-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--black-border);
+  box-shadow: var(--shadow-md);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.navbar__logo img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.navbar__logo-name {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.3px;
+  line-height: 1;
+}
+
+/* "Nexo" — brand accent word */
+.navbar__logo-brand {
+  background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Nav links */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar__link {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gray-400);
+  padding: 7px 12px;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+}
+
+.navbar__link:hover {
+  color: var(--white);
+  background: rgba(26, 171, 240, 0.07);
+}
+
+/* Desktop actions */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Theme toggle */
+.navbar__theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid var(--black-border);
+  background: var(--black-card);
+  color: var(--gray-400);
+  transition: all var(--transition-fast);
+}
+
+.navbar__theme-toggle:hover {
+  border-color: var(--blue-border);
+  color: var(--blue);
+  background: rgba(26, 171, 240, 0.08);
+}
+
+/* Email icon */
+.navbar__email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid var(--black-border);
+  color: var(--gray-400);
+  transition: all var(--transition-fast);
+}
+
+.navbar__email:hover {
+  border-color: var(--blue-border);
+  color: var(--blue);
+  background: rgba(26, 171, 240, 0.06);
+}
+
+.navbar__hamburger {
+  display: none;
+  background: none;
+  color: var(--white);
+  padding: 8px;
+  z-index: 1001;
+}
+
+.navbar__mobile-actions {
+  display: none;
+}
+
+.navbar__backdrop {
+  display: none;
+}
+
+/* ── Mobile ─────────────────────────────────── */
+@media (max-width: 1060px) {
+  .navbar__links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: var(--black-soft);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px 36px 40px;
+    gap: 2px;
+    transition: right var(--transition-slow);
+    border-left: 1px solid var(--black-border);
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .navbar__links--open {
+    right: 0;
+  }
+
+  .navbar__link {
+    font-size: 1rem;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 0;
+    border-bottom: 1px solid var(--black-border);
+    color: var(--gray-300);
+  }
+
+  .navbar__actions {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: block;
+  }
+
+  .navbar__mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--black-border);
+  }
+
+  .navbar__mobile-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: var(--backdrop-bg);
+    z-index: 999;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__links {
+    width: 100%;
+  }
+}

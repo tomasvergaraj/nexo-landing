@@ -1,0 +1,117 @@
+.services {
+  background: var(--black);
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.services__card {
+  background: var(--black-card);
+  border: 1px solid var(--black-border);
+  border-radius: 12px;
+  padding: 36px 28px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.services__card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.services__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--blue-dark) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.services__card:hover {
+  border-color: var(--blue-border);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.services__card:hover::before {
+  transform: scaleX(1);
+}
+
+.services__card-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 171, 240, 0.08);
+  border: 1px solid var(--blue-border);
+  border-radius: 10px;
+  color: var(--blue);
+  margin-bottom: 22px;
+  transition: all var(--transition-base);
+}
+
+.services__card:hover .services__card-icon {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(26, 171, 240, 0.3);
+}
+
+.services__card-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+}
+
+.services__card-desc {
+  font-size: 0.9rem;
+  color: var(--gray-400);
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+.services__card-line {
+  width: 32px;
+  height: 2px;
+  background: var(--gray-800);
+  margin-top: 22px;
+  border-radius: 2px;
+  transition: all var(--transition-base);
+}
+
+.services__card:hover .services__card-line {
+  width: 52px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--blue-dark) 100%);
+}
+
+@media (max-width: 900px) {
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .services__card {
+    padding: 28px 22px 24px;
+  }
+}

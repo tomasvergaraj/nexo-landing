@@ -1,0 +1,49 @@
+/* ============================================
+   CONFIGURACION DEL SITIO - NEXO SOFTWARE SPA
+   Edita estos valores para personalizar la web
+   ============================================ */
+
+export const SITE_CONFIG = {
+  companyName: 'Nexo Software',
+  tagline: 'Desarrollo de Software a Medida',
+  slogan: 'Conectamos tu negocio con la tecnología que necesita',
+  logoPath: '/nexo-logo.png',
+};
+
+export const SEO_CONFIG = {
+  language: 'es-CL',
+  locale: 'es_CL',
+  countryCode: 'CL',
+  siteUrl: '',
+  defaultTitle: 'Nexo Software SPA | Desarrollo de Software a Medida',
+  defaultDescription:
+    'Empresa chilena de desarrollo de software a medida. Creamos aplicaciones web, móviles y sistemas empresariales que impulsan tu negocio.',
+  ogImagePath: '/nexo-logo.png',
+  themeColor: '#0A0A0A',
+};
+
+export const CONTACT_INFO = {
+  phone: '+56 9 XXXX XXXX',
+  phoneClean: '569XXXXXXXX',
+  whatsapp: '569XXXXXXXX',
+  whatsappMessage: 'Hola, me gustaría consultar sobre el desarrollo de un proyecto de software.',
+  email: 'contacto@nexosoftware.cl',
+  address: 'Santiago, Chile',
+  city: 'Santiago',
+  region: 'Región Metropolitana',
+  schedule: 'Lunes a Viernes: 09:00 - 18:00',
+};
+
+export const SOCIAL_LINKS = {
+  linkedin: 'https://www.linkedin.com/company/nexo-software',
+  github: 'https://github.com/nexo-software',
+  instagram: 'https://www.instagram.com/nexosoftware',
+};
+
+export const getWhatsAppLink = (message) => {
+  const msg = encodeURIComponent(message || CONTACT_INFO.whatsappMessage);
+  return `https://wa.me/${CONTACT_INFO.whatsapp}?text=${msg}`;
+};
+
+export const getPhoneLink = () => `tel:${CONTACT_INFO.phoneClean}`;
+export const getEmailLink = () => `mailto:${CONTACT_INFO.email}`;
