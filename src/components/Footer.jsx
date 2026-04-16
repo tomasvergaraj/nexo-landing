@@ -41,7 +41,10 @@ export default function Footer() {
                   alt={SITE_CONFIG.companyName}
                   className="footer__logo"
                 />
-                <span className="footer__logo-name">{SITE_CONFIG.companyName}</span>
+                <span className="footer__logo-name">
+                  <span className="footer__logo-brand">Nexo</span>
+                  {' '}Software
+                </span>
               </div>
               <p className="footer__brand-text">
                 Empresa chilena especializada en el desarrollo de software a medida.

@@ -35,6 +35,13 @@
   letter-spacing: -0.2px;
 }
 
+.footer__logo-brand {
+  background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .footer__brand-text {
   font-size: 0.87rem;
   color: var(--gray-400);
