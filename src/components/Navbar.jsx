@@ -96,6 +96,16 @@ export default function Navbar() {
           </a>
         </div>
 
+        {/* Mobile theme toggle */}
+        <button
+          className="navbar__theme-toggle navbar__theme-toggle--mobile"
+          onClick={toggleTheme}
+          aria-label={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
+          title={theme === 'light' ? 'Modo oscuro' : 'Modo claro'}
+        >
+          {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
+        </button>
+
         {/* Hamburger */}
         <button
           className="navbar__hamburger"
