@@ -35,9 +35,9 @@ export const CONTACT_INFO = {
 };
 
 export const SOCIAL_LINKS = {
-  linkedin: 'https://www.linkedin.com/company/nexo-software',
-  github: 'https://github.com/nexo-software',
-  instagram: 'https://www.instagram.com/nexosoftware',
+  linkedin: 'https://www.linkedin.com/company/nexo-software-spa/',
+  github: 'https://github.com/tomasvergaraj',
+  instagram: 'https://www.instagram.com/tomasvergar4/',
 };
 
 export const getWhatsAppLink = (message) => {
