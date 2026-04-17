@@ -52,10 +52,11 @@
 }
 
 .techstack__tag:hover {
-  border-color: rgba(var(--tech-color-rgb, 26, 171, 240), 0.35);
+  border-color: rgba(26, 171, 240, 0.35);
   background: rgba(26, 171, 240, 0.04);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(26, 171, 240, 0.08);
   transform: translateY(-4px) scale(1);
+  transition-delay: 0s !important;
 }
 
 /* Icon wrapper */
