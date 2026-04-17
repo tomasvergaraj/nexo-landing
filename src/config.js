@@ -23,15 +23,15 @@ export const SEO_CONFIG = {
 };
 
 export const CONTACT_INFO = {
-  phone: '+56 9 XXXX XXXX',
-  phoneClean: '569XXXXXXXX',
-  whatsapp: '569XXXXXXXX',
+  phone: '+56 9 8196 4119',
+  phoneClean: '56981964119',
+  whatsapp: '56981964119',
   whatsappMessage: 'Hola, me gustaría consultar sobre el desarrollo de un proyecto de software.',
   email: 'contacto@nexosoftware.cl',
-  address: 'Santiago, Chile',
-  city: 'Santiago',
-  region: 'Región Metropolitana',
-  schedule: 'Lunes a Viernes: 09:00 - 18:00',
+  address: 'Quillota, Chile',
+  city: 'Quillota',
+  region: 'Región de Valparaíso',
+  schedule: 'Siempre disponible',
 };
 
 export const SOCIAL_LINKS = {

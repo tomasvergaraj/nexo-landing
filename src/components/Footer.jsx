@@ -12,7 +12,7 @@ const quickLinks = [
   { label: 'Ir al inicio', href: '#hero' },
   { label: 'Conoce la empresa', href: '#nosotros' },
   { label: 'Explorar servicios', href: '#servicios' },
-  { label: 'Ver beneficios', href: '#beneficios' },
+  { label: 'Nuestros proyectos', href: '#proyectos' },
   { label: 'Cómo trabajamos', href: '#proceso' },
   { label: 'Tecnologías', href: '#tecnologias' },
 ];

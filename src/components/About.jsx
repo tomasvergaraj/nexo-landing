@@ -1,5 +1,6 @@
 import { Shield, Lightbulb, Users, Clock } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { SITE_CONFIG } from '../config';
 import './About.css';
 
 const highlights = [
@@ -20,12 +21,14 @@ export default function About() {
           <div className="about__image-col">
             <div className="about__image-wrapper">
               <div className="about__image-placeholder">
-                <div className="about__image-icon">
-                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="16 18 22 12 16 6" />
-                    <polyline points="8 6 2 12 8 18" />
-                  </svg>
-                  <span>Nexo Software SPA</span>
+                <div className="about__logo-display">
+                  <div className="about__logo-ring about__logo-ring--outer" />
+                  <div className="about__logo-ring about__logo-ring--inner" />
+                  <img
+                    src={SITE_CONFIG.logoPath}
+                    alt={SITE_CONFIG.companyName}
+                    className="about__company-logo"
+                  />
                 </div>
               </div>
             </div>
