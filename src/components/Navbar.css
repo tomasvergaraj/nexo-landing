@@ -151,16 +151,23 @@
     right: -100%;
     width: 300px;
     height: 100vh;
-    background: var(--black-soft);
+    background: var(--navbar-scrolled-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     padding: 80px 36px 40px;
     gap: 2px;
-    transition: right var(--transition-slow);
+    transition: right var(--transition-slow), opacity var(--transition-slow);
     border-left: 1px solid var(--black-border);
     z-index: 1000;
     box-shadow: var(--shadow-lg);
+    opacity: 0;
+  }
+
+  .navbar__links--open {
+    opacity: 1;
   }
 
   .navbar__links--open {

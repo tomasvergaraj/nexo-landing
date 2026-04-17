@@ -64,7 +64,7 @@ export default function Process() {
               <div
                 key={step.number}
                 className={`process__card ${visible ? 'visible' : ''}`}
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                style={{ transitionDelay: `${i * 0.13}s` }}
               >
                 <div className="process__card-header">
                   <span className="process__card-number">{step.number}</span>

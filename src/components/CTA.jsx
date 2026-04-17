@@ -12,6 +12,9 @@ export default function CTA() {
         <div className="cta__gradient" />
         <div className="cta__grid-pattern" />
       </div>
+      <div className="cta__orb cta__orb--1" />
+      <div className="cta__orb cta__orb--2" />
+      <div className="cta__orb cta__orb--3" />
       <div className="container" ref={ref}>
         <div className={`cta__content ${visible ? 'visible' : ''}`}>
           <span className="section-label">¿Listo para comenzar?</span>

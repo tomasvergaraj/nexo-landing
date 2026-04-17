@@ -21,8 +21,14 @@ export default function About() {
           <div className="about__image-col">
             <div className="about__image-wrapper">
               <div className="about__image-placeholder">
+                <div className="about__card-grid" />
+                <div className="about__card-orb about__card-orb--1" />
+                <div className="about__card-orb about__card-orb--2" />
+                <div className="about__card-orb about__card-orb--3" />
+                <div className="about__card-scanner" />
                 <div className="about__logo-display">
                   <div className="about__logo-ring about__logo-ring--outer" />
+                  <div className="about__logo-ring about__logo-ring--mid" />
                   <div className="about__logo-ring about__logo-ring--inner" />
                   <img
                     src={SITE_CONFIG.logoPath}

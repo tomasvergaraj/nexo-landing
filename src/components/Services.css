@@ -36,16 +36,37 @@
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-base);
+  z-index: 1;
+}
+
+/* Shimmer sweep on hover */
+.services__card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -180%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(26, 171, 240, 0.07), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .services__card:hover {
-  border-color: var(--blue-border);
+  border-color: rgba(26, 171, 240, 0.4);
   transform: translateY(-6px);
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: var(--shadow-card-hover), inset 0 1px 0 rgba(26, 171, 240, 0.12);
+  background: linear-gradient(160deg, rgba(26, 171, 240, 0.04) 0%, var(--black-card) 60%);
 }
 
 .services__card:hover::before {
   transform: scaleX(1);
+}
+
+.services__card:hover::after {
+  left: 200%;
 }
 
 .services__card-icon {

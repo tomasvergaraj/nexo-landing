@@ -121,6 +121,25 @@ const technologies = [
 
 const categories = [...new Set(technologies.map((t) => t.category))];
 
+const isPointerFine = () =>
+  typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches;
+
+function handleTilt(e) {
+  if (!isPointerFine()) return;
+  const el = e.currentTarget;
+  el.style.transition = 'border-color 0.2s, box-shadow 0.2s, background 0.2s, opacity 0.5s';
+  const rect = el.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+  const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+  el.style.transform = `perspective(700px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-4px)`;
+}
+
+function resetTilt(e) {
+  const el = e.currentTarget;
+  el.style.transition = '';
+  el.style.transform = '';
+}
+
 export default function TechStack() {
   const [ref, visible] = useScrollAnimation();
 
@@ -143,6 +162,8 @@ export default function TechStack() {
               <div
                 key={tech.name}
                 className="techstack__tag"
+                onMouseMove={handleTilt}
+                onMouseLeave={resetTilt}
                 style={{ transitionDelay: `${i * 0.05}s`, '--tech-color': tech.color }}
               >
                 <div className="techstack__tag-icon">

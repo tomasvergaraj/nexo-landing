@@ -1,7 +1,17 @@
 import { ChevronDown, ArrowRight, Sparkles } from 'lucide-react';
 import { getWhatsAppLink, getEmailLink } from '../config';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useCountUp } from '../hooks/useCountUp';
 import './Hero.css';
+
+function StatCount({ value, suffix }) {
+  const [ref, count] = useCountUp(value, 1800);
+  return (
+    <span className="hero__stat-number" ref={ref}>
+      {count}{suffix}
+    </span>
+  );
+}
 
 export default function Hero() {
   const [ref, visible] = useScrollAnimation(0.1);
@@ -51,17 +61,17 @@ export default function Hero() {
 
         <div className="hero__stats">
           <div className="hero__stat">
-            <span className="hero__stat-number">50+</span>
+            <StatCount value={50} suffix="+" />
             <span className="hero__stat-label">Proyectos Entregados</span>
           </div>
           <div className="hero__stat-divider" />
           <div className="hero__stat">
-            <span className="hero__stat-number">5+</span>
+            <StatCount value={5} suffix="+" />
             <span className="hero__stat-label">Años de Experiencia</span>
           </div>
           <div className="hero__stat-divider" />
           <div className="hero__stat">
-            <span className="hero__stat-number">100%</span>
+            <StatCount value={100} suffix="%" />
             <span className="hero__stat-label">Satisfacción</span>
           </div>
         </div>
