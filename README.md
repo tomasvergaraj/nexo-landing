@@ -96,6 +96,28 @@ export const SOCIAL_LINKS = {
   github: 'https://github.com/nexo-software',                 // <-- completar
   instagram: 'https://www.instagram.com/nexosoftware',        // <-- completar
 };
+
+export const PRODUCT_ACTIONS = {
+  'nexo-fitness': [
+    {
+      label: 'Acceder a Nexo Fitness',
+      url: 'https://nexofitness.cl', // <-- ajustar si cambia
+      kind: 'external',
+    },
+  ],
+  'nexo-pos': [
+    {
+      label: 'Contactar por WhatsApp',
+      url: 'https://wa.me/...', // <-- generado desde getWhatsAppLink(...)
+      kind: 'whatsapp',
+    },
+    {
+      label: 'Contactar por correo',
+      url: 'mailto:contacto@nexosoftware.cl', // <-- generado desde getEmailLink(...)
+      kind: 'email',
+    },
+  ],
+};
 ```
 
 ---

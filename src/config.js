@@ -46,4 +46,49 @@ export const getWhatsAppLink = (message) => {
 };
 
 export const getPhoneLink = () => `tel:${CONTACT_INFO.phoneClean}`;
-export const getEmailLink = () => `mailto:${CONTACT_INFO.email}`;
+
+export const getEmailLink = (subject, body) => {
+  const params = new URLSearchParams();
+
+  if (subject) params.set('subject', subject);
+  if (body) params.set('body', body);
+
+  const query = params.toString();
+  return `mailto:${CONTACT_INFO.email}${query ? `?${query}` : ''}`;
+};
+
+export const PRODUCT_ACTIONS = {
+  'nexo-fitness': [
+    {
+      label: 'Acceder a Nexo Fitness',
+      url: 'https://nexofitness.cl',
+      kind: 'external',
+      newTab: true,
+    },
+  ],
+  'nexo-pos': [
+    {
+      label: 'Contactar por WhatsApp',
+      url: getWhatsAppLink('Hola, me interesa conocer Nexo POS.'),
+      kind: 'whatsapp',
+      newTab: true,
+    },
+    {
+      label: 'Contactar por correo',
+      url: getEmailLink(
+        'Consulta sobre Nexo POS',
+        'Hola, me interesa conocer Nexo POS.',
+      ),
+      kind: 'email',
+      newTab: false,
+    },
+  ],
+  'bugueno-hormigones': [
+    {
+      label: 'Visitar sitio',
+      url: 'https://buguenohormigones.cl/',
+      kind: 'external',
+      newTab: true,
+    },
+  ],
+};
