@@ -48,12 +48,12 @@ export const getWhatsAppLink = (message) => {
 export const getPhoneLink = () => `tel:${CONTACT_INFO.phoneClean}`;
 
 export const getEmailLink = (subject, body) => {
-  const params = new URLSearchParams();
+  const params = [];
 
-  if (subject) params.set('subject', subject);
-  if (body) params.set('body', body);
+  if (subject) params.push(`subject=${encodeURIComponent(subject)}`);
+  if (body) params.push(`body=${encodeURIComponent(body)}`);
 
-  const query = params.toString();
+  const query = params.join('&');
   return `mailto:${CONTACT_INFO.email}${query ? `?${query}` : ''}`;
 };
 
