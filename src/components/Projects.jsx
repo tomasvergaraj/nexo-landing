@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check, Mail } from 'lucide-react';
+import { ArrowUpRight, Mail } from 'lucide-react';
 import { PRODUCT_ACTIONS } from '../config';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './Projects.css';
@@ -20,7 +20,6 @@ const projects = [
       'Reportes analíticos exportables',
     ],
     platform: 'Plataforma Web SaaS',
-    accentRgb: '26, 171, 240',
     logoSrc: '/nexo-fitness-logo.png',
     logoAlt: 'Logo de Nexo Fitness',
   },
@@ -40,27 +39,25 @@ const projects = [
       'Backup cloud automático vía Supabase',
     ],
     platform: 'Desktop + Mobile + Web',
-    accentRgb: '0, 121, 204',
     logoSrc: '/nexo-pos-logo.png',
     logoAlt: 'Logo de Nexo POS',
   },
   {
     id: 'bugueno-hormigones',
     name: 'Bugueño Hormigones',
-    category: 'Landing Page - Construccion',
+    category: 'Landing · Construcción',
     description:
-      'Landing corporativa orientada a captar cotizaciones para una planta certificada de hormigon en Hijuelas, con foco en SEO local, confianza comercial y conversion desde WhatsApp para toda la Quinta Region.',
+      'Landing corporativa orientada a captar cotizaciones para una planta certificada de hormigón en Hijuelas, con foco en SEO local, confianza comercial y conversión desde WhatsApp para toda la Quinta Región.',
     tags: ['React', 'Vite', 'SEO Local', 'Responsive', 'WhatsApp'],
     features: [
-      'Landing enfocada en cotizacion rapida',
-      'Posicionamiento local para Hijuelas y Quinta Region',
+      'Landing enfocada en cotización rápida',
+      'Posicionamiento local para Hijuelas y Quinta Región',
       'Secciones de confianza para planta y hormigones certificados',
-      'CTA directos a WhatsApp, telefono y correo',
-      'Galeria de faenas, flota y proyectos ejecutados',
-      'Cobertura regional y asesoria comercial visible',
+      'CTA directos a WhatsApp, teléfono y correo',
+      'Galería de faenas, flota y proyectos ejecutados',
+      'Cobertura regional y asesoría comercial visible',
     ],
     platform: 'Landing Page Corporativa',
-    accentRgb: '245, 158, 11',
     logoSrc: '/bugueno-hormigones-logo.png',
     logoAlt: 'Logo de Bugueño Hormigones',
     logoBackground: '#000000',
@@ -94,14 +91,15 @@ export default function Projects() {
 
   return (
     <section id="proyectos" className="projects section">
-      <div className="pattern-overlay" />
       <div className="container">
         <div className="section-header">
-          <span className="section-label">Proyectos Reales</span>
-          <h2 className="section-title">Lo que hemos construido</h2>
+          <span className="section-label">03 — Proyectos</span>
+          <h2 className="section-title">
+            Lo que hemos <em>construido</em>.
+          </h2>
           <p className="section-subtitle">
-            Soluciones completas desarrolladas desde cero — desde la arquitectura hasta el deploy —
-            para clientes reales con necesidades reales.
+            Productos completos en producción — arquitectura, código y deploy
+            hechos en casa, para clientes con necesidades reales.
           </p>
         </div>
 
@@ -114,14 +112,11 @@ export default function Projects() {
                 key={project.id}
                 id={project.id}
                 className="projects__card"
-                style={{
-                  transitionDelay: `${i * 0.15}s`,
-                  '--accent-rgb': project.accentRgb,
-                }}
+                style={{ transitionDelay: `${i * 0.1}s` }}
               >
                 <div className="projects__card-header">
                   <div
-                    className="projects__card-icon projects__card-icon--image"
+                    className="projects__card-icon"
                     style={{ backgroundColor: project.logoBackground }}
                   >
                     <img
@@ -132,30 +127,31 @@ export default function Projects() {
                       style={{ objectPosition: project.logoPosition }}
                     />
                   </div>
-                  <span className="projects__card-badge">{project.category}</span>
+                  <span className="projects__card-category">{project.category}</span>
                 </div>
 
                 <div className="projects__card-body">
                   <h3 className="projects__card-title">{project.name}</h3>
                   <p className="projects__card-desc">{project.description}</p>
 
+                  <ul className="projects__features">
+                    {project.features.map((feature) => (
+                      <li key={feature}>
+                        <span className="projects__feature-mark" aria-hidden="true">+</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
                   <div className="projects__card-tags">
                     {project.tags.map((tag) => (
                       <span key={tag} className="projects__tag">{tag}</span>
                     ))}
                   </div>
-
-                  <ul className="projects__features">
-                    {project.features.map((feature) => (
-                      <li key={feature}>
-                        <Check size={14} />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
                 <div className="projects__card-footer">
+                  <span className="projects__platform">{project.platform}</span>
                   {actions.length ? (
                     <div className="projects__actions">
                       {actions.map((action) => {
@@ -165,19 +161,18 @@ export default function Projects() {
                           <a
                             key={action.label}
                             href={action.url}
-                            className="btn btn-ghost btn-sm projects__access-link"
+                            className="projects__access-link"
                             target={action.newTab ? '_blank' : undefined}
                             rel={action.newTab ? 'noopener noreferrer' : undefined}
                             aria-label={action.label}
                           >
                             {action.label}
-                            <Icon size={16} />
+                            <Icon size={14} />
                           </a>
                         );
                       })}
                     </div>
                   ) : null}
-                  <span className="projects__platform">{project.platform}</span>
                 </div>
               </article>
             );

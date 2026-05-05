@@ -1,4 +1,4 @@
-import { Mail, ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getWhatsAppLink, getEmailLink } from '../config';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './CTA.css';
@@ -8,42 +8,36 @@ export default function CTA() {
 
   return (
     <section id="contacto" className="cta section">
-      <div className="cta__bg">
-        <div className="cta__gradient" />
-        <div className="cta__grid-pattern" />
-      </div>
-      <div className="cta__orb cta__orb--1" />
-      <div className="cta__orb cta__orb--2" />
-      <div className="cta__orb cta__orb--3" />
       <div className="container" ref={ref}>
         <div className={`cta__content ${visible ? 'visible' : ''}`}>
-          <span className="section-label">¿Listo para comenzar?</span>
-          <h2 className="cta__title">Hagamos realidad tu proyecto</h2>
+          <span className="section-label">08 — Conversemos</span>
+          <h2 className="cta__title">
+            ¿Tienes un proyecto<br />
+            en <em>mente</em>?
+          </h2>
           <p className="cta__subtitle">
-            Cuéntanos tu idea y te respondemos en menos de 24 horas con una
-            propuesta sin compromiso. La primera reunión es completamente gratis.
+            Cuéntame qué quieres construir. Respondo en menos de 24 horas con
+            una propuesta sin compromiso.
           </p>
-          <div className="cta__buttons">
+
+          <div className="cta__actions">
             <a
               href={getWhatsAppLink()}
               className="btn btn-primary"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Sparkles size={18} />
-              Solicitar propuesta gratis
+              Conversemos por WhatsApp
+              <ArrowRight size={16} />
             </a>
-            <a href={getEmailLink()} className="btn btn-ghost">
-              <Mail size={18} />
-              Enviar un email
-            </a>
-            <a href="#servicios" className="btn btn-outline">
-              Ver servicios
-              <ArrowRight size={17} />
+            <a href={getEmailLink()} className="btn-link">
+              o escríbeme un correo
+              <ArrowRight size={14} />
             </a>
           </div>
-          <p className="cta__note">
-            Sin contratos largos · Sin letra chica · 100% satisfacción garantizada
+
+          <p className="cta__meta">
+            La primera reunión es gratuita y dura 30 min. Sin compromisos.
           </p>
         </div>
       </div>

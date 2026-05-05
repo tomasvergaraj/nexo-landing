@@ -81,18 +81,18 @@ export default function Navbar() {
             aria-label={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
             title={theme === 'light' ? 'Modo oscuro' : 'Modo claro'}
           >
-            {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
+            {theme === 'light' ? <Moon size={15} /> : <Sun size={15} />}
           </button>
           <a href={getEmailLink()} className="navbar__email" aria-label="Enviar email">
-            <Mail size={17} />
+            <Mail size={15} />
           </a>
           <a
             href={getWhatsAppLink()}
-            className="btn btn-primary btn-sm"
+            className="btn btn-outline btn-sm"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Solicitar propuesta
+            Conversemos
           </a>
         </div>
 

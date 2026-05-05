@@ -23,6 +23,7 @@ export default function SEO() {
     setMeta('og:type', 'website', true);
     setMeta('og:locale', SEO_CONFIG.locale, true);
     setMeta('og:image', SEO_CONFIG.ogImagePath, true);
+    if (SEO_CONFIG.siteUrl) setMeta('og:url', SEO_CONFIG.siteUrl, true);
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', SEO_CONFIG.defaultTitle);
     setMeta('twitter:description', SEO_CONFIG.defaultDescription);

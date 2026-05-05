@@ -1,44 +1,30 @@
-import {
-  CheckCircle2,
-  Timer,
-  HeartHandshake,
-  ShieldCheck,
-  Zap,
-  MessageSquare,
-} from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './Benefits.css';
 
 const benefits = [
   {
-    icon: ShieldCheck,
-    title: 'Código limpio y escalable',
-    desc: 'Escribimos software con buenas prácticas, documentado y estructurado para que pueda crecer con tu negocio sin convertirse en deuda técnica.',
+    title: 'Código limpio y mantenible',
+    desc: 'Buenas prácticas, documentación y tests donde importan. Tu equipo va a poder mantener este software en cinco años sin querer reescribirlo.',
   },
   {
-    icon: Timer,
-    title: 'Cumplimiento de plazos',
-    desc: 'Planificamos con metodologías ágiles y entregamos en los tiempos acordados. Sabemos que tu negocio depende de los plazos de entrega.',
+    title: 'Plazos honestos',
+    desc: 'Si algo no se puede entregar a tiempo, te aviso antes — no después. Trabajamos con sprints cortos para que veas avances reales cada semana.',
   },
   {
-    icon: HeartHandshake,
-    title: 'Comunicación cercana',
-    desc: 'Tendrás acceso directo al equipo. Sin intermediarios, sin burocracia. Respondemos rápido y te mantenemos informado en todo momento.',
+    title: 'Comunicación directa',
+    desc: 'Sin intermediarios ni gerentes de cuenta. La persona que escribe el código es la misma con la que conversas el alcance y los cambios.',
   },
   {
-    icon: MessageSquare,
-    title: 'Metodología ágil',
-    desc: 'Trabajamos en sprints cortos con entregas incrementales. Ves avances reales desde las primeras semanas y puedes ajustar el rumbo a tiempo.',
+    title: 'Stack moderno y maduro',
+    desc: 'Tecnologías con soporte de comunidad amplio: React, TypeScript, FastAPI, PostgreSQL. Nada experimental sin que lo conversemos antes.',
   },
   {
-    icon: Zap,
-    title: 'Stack tecnológico moderno',
-    desc: 'Usamos tecnologías actuales y bien soportadas que garantizan rendimiento, seguridad y facilidad de mantenimiento a largo plazo.',
+    title: 'Seguridad por defecto',
+    desc: 'Cifrado de datos sensibles, autenticación robusta, dependencias auditadas y backups automatizados. No es un extra — está incluido.',
   },
   {
-    icon: CheckCircle2,
-    title: 'Soporte post-lanzamiento',
-    desc: 'No desaparecemos tras la entrega. Ofrecemos garantía y planes de mantenimiento para que tu software siempre esté operativo y actualizado.',
+    title: 'Soporte después del lanzamiento',
+    desc: 'Garantía de 30 días incluida. Después, planes de mantenimiento mensuales o por hora según lo que tu proyecto realmente necesite.',
   },
 ];
 
@@ -47,37 +33,32 @@ export default function Benefits() {
 
   return (
     <section id="beneficios" className="benefits section">
-      <div className="pattern-overlay" />
       <div className="container">
         <div className="section-header">
-          <span className="section-label">¿Por qué elegirnos?</span>
-          <h2 className="section-title">Tu proyecto en manos confiables</h2>
+          <span className="section-label">05 — Por qué Nexo</span>
+          <h2 className="section-title">
+            Diferencias <em>concretas</em>.
+          </h2>
           <p className="section-subtitle">
-            Cada detalle importa cuando se trata de construir el software que moverá tu empresa.
-            Con Nexo tienes la certeza de un desarrollo profesional y comprometido.
+            No promesas vagas — seis cosas que efectivamente hacemos diferente.
           </p>
         </div>
 
-        <div className="benefits__grid" ref={ref}>
-          {benefits.map((benefit, i) => {
-            const Icon = benefit.icon;
-            return (
-              <div
-                key={benefit.title}
-                className={`benefits__item ${visible ? 'visible' : ''}`}
-                style={{ transitionDelay: `${i * 0.08}s` }}
-              >
-                <div className="benefits__icon-wrap">
-                  <Icon size={22} strokeWidth={1.8} />
-                </div>
-                <div className="benefits__text">
-                  <p className="benefits__text-title">{benefit.title}</p>
-                  <p>{benefit.desc}</p>
-                </div>
+        <ul className={`benefits__grid ${visible ? 'visible' : ''}`} ref={ref}>
+          {benefits.map((benefit, i) => (
+            <li
+              key={benefit.title}
+              className="benefits__item"
+              style={{ transitionDelay: `${i * 0.05}s` }}
+            >
+              <span className="benefits__plus" aria-hidden="true">+</span>
+              <div className="benefits__text">
+                <h3 className="benefits__item-title">{benefit.title}</h3>
+                <p className="benefits__item-desc">{benefit.desc}</p>
               </div>
-            );
-          })}
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

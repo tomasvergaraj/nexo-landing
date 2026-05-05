@@ -1,4 +1,4 @@
-import { MapPin, Mail, Clock, Linkedin, Github, Instagram } from 'lucide-react';
+import { Linkedin, Github, Instagram, ArrowUpRight } from 'lucide-react';
 import {
   SITE_CONFIG,
   CONTACT_INFO,
@@ -8,22 +8,13 @@ import {
 } from '../config';
 import './Footer.css';
 
-const quickLinks = [
-  { label: 'Ir al inicio', href: '#hero' },
-  { label: 'Conoce la empresa', href: '#nosotros' },
-  { label: 'Explorar servicios', href: '#servicios' },
-  { label: 'Nuestros proyectos', href: '#proyectos' },
-  { label: 'Cómo trabajamos', href: '#proceso' },
+const navLinks = [
+  { label: 'Quién está detrás', href: '#nosotros' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Proceso', href: '#proceso' },
   { label: 'Tecnologías', href: '#tecnologias' },
-];
-
-const serviceLinks = [
-  'Desarrollo Web',
-  'Apps Móviles',
-  'Software a Medida',
-  'Consultoría Tecnológica',
-  'Diseño UI/UX',
-  'Soporte y Mantenimiento',
+  { label: 'Preguntas frecuentes', href: '#faq' },
 ];
 
 export default function Footer() {
@@ -41,45 +32,30 @@ export default function Footer() {
                   alt={SITE_CONFIG.companyName}
                   className="footer__logo"
                 />
-                <span className="footer__logo-name">
-                  <span className="footer__logo-brand">Nexo</span>
-                  {' '}Software
-                </span>
+                <span className="footer__logo-name">Nexo Software</span>
               </div>
               <p className="footer__brand-text">
-                Empresa chilena especializada en el desarrollo de software a medida.
-                Conectamos tu negocio con la tecnología que necesita para crecer.
+                Estudio independiente de desarrollo de software a medida.
+                Plataformas SaaS, sistemas POS y aplicaciones móviles, hechas
+                en Quillota, Chile.
               </p>
-              <div className="footer__social">
-                <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <Linkedin size={17} />
-                </a>
-                <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                  <Github size={17} />
-                </a>
-                <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                  <Instagram size={17} />
-                </a>
-              </div>
+              <a
+                href={getWhatsAppLink()}
+                className="footer__cta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Conversemos tu proyecto
+                <ArrowUpRight size={16} />
+              </a>
             </div>
 
             <div className="footer__col">
-              <p className="footer__col-title">Enlaces</p>
+              <p className="footer__col-title">Navegar</p>
               <ul className="footer__links">
-                {quickLinks.map((link) => (
+                {navLinks.map((link) => (
                   <li key={link.href}>
                     <a href={link.href}>{link.label}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="footer__col">
-              <p className="footer__col-title">Servicios</p>
-              <ul className="footer__links">
-                {serviceLinks.map((service) => (
-                  <li key={service}>
-                    <a href="#servicios">{service}</a>
                   </li>
                 ))}
               </ul>
@@ -89,26 +65,50 @@ export default function Footer() {
               <p className="footer__col-title">Contacto</p>
               <ul className="footer__contact">
                 <li>
-                  <MapPin size={15} />
-                  <span>{CONTACT_INFO.address}</span>
-                </li>
-                <li>
-                  <Mail size={15} />
+                  <span className="footer__label">Correo</span>
                   <a href={getEmailLink()}>{CONTACT_INFO.email}</a>
                 </li>
                 <li>
-                  <Clock size={15} />
-                  <span>{CONTACT_INFO.schedule}</span>
+                  <span className="footer__label">WhatsApp</span>
+                  <a
+                    href={getWhatsAppLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {CONTACT_INFO.phone}
+                  </a>
+                </li>
+                <li>
+                  <span className="footer__label">Ubicación</span>
+                  <span>{CONTACT_INFO.address}</span>
                 </li>
               </ul>
-              <a
-                href={getWhatsAppLink()}
-                className="btn btn-primary btn-sm footer__cta-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Solicitar propuesta
-              </a>
+              <div className="footer__social">
+                <a
+                  href={SOCIAL_LINKS.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={16} />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <Github size={16} />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={16} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -116,8 +116,12 @@ export default function Footer() {
 
       <div className="footer__bottom">
         <div className="container">
-          <p>© {currentYear} {SITE_CONFIG.companyName} SPA. Todos los derechos reservados.</p>
-          <p className="footer__bottom-right">Hecho con pasión en Chile</p>
+          <p>© {currentYear} {SITE_CONFIG.companyName} SPA</p>
+          <p className="footer__bottom-right">
+            <span>Hecho en Chile</span>
+            <span className="footer__sep">·</span>
+            <span>v1.0</span>
+          </p>
         </div>
       </div>
     </footer>

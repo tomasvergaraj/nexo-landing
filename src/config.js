@@ -14,12 +14,12 @@ export const SEO_CONFIG = {
   language: 'es-CL',
   locale: 'es_CL',
   countryCode: 'CL',
-  siteUrl: '',
-  defaultTitle: 'Nexo Software SPA | Desarrollo de Software a Medida',
+  siteUrl: 'https://nexosoftware.cl',
+  defaultTitle: 'Nexo Software SPA | Software a medida hecho en Chile',
   defaultDescription:
-    'Empresa chilena de desarrollo de software a medida. Creamos aplicaciones web, móviles y sistemas empresariales que impulsan tu negocio.',
+    'Estudio independiente de desarrollo a medida en Quillota. Plataformas SaaS, sistemas POS, aplicaciones móviles y landings de conversión.',
   ogImagePath: '/nexo-logo.png',
-  themeColor: '#0A0A0A',
+  themeColor: '#F7F7F4',
 };
 
 export const CONTACT_INFO = {

@@ -1,75 +1,86 @@
-import { Shield, Lightbulb, Users, Clock } from 'lucide-react';
+import { useState } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { SITE_CONFIG } from '../config';
 import './About.css';
-
-const highlights = [
-  { icon: Shield, label: 'Código de calidad' },
-  { icon: Lightbulb, label: 'Soluciones innovadoras' },
-  { icon: Users, label: 'Equipo comprometido' },
-  { icon: Clock, label: 'Entregas a tiempo' },
-];
 
 export default function About() {
   const [ref, visible] = useScrollAnimation();
+  const [photoFailed, setPhotoFailed] = useState(false);
 
   return (
     <section id="nosotros" className="about section">
-      <div className="pattern-overlay" />
       <div className="container" ref={ref}>
         <div className={`about__grid ${visible ? 'visible' : ''}`}>
-          <div className="about__image-col">
-            <div className="about__image-wrapper">
-              <div className="about__image-placeholder">
-                <div className="about__card-grid" />
-                <div className="about__card-orb about__card-orb--1" />
-                <div className="about__card-orb about__card-orb--2" />
-                <div className="about__card-orb about__card-orb--3" />
-                <div className="about__card-scanner" />
-                <div className="about__logo-display">
-                  <div className="about__logo-ring about__logo-ring--outer" />
-                  <div className="about__logo-ring about__logo-ring--mid" />
-                  <div className="about__logo-ring about__logo-ring--inner" />
-                  <img
-                    src={SITE_CONFIG.logoPath}
-                    alt={SITE_CONFIG.companyName}
-                    className="about__company-logo"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="about__highlights">
-              {highlights.map(({ icon: Icon, label }) => (
-                <div key={label} className="about__highlight">
-                  <Icon size={17} />
-                  <span>{label}</span>
-                </div>
-              ))}
-            </div>
+          <div className="about__head">
+            <span className="section-label">01 — Quién está detrás</span>
           </div>
 
-          <div className="about__text-col">
-            <span className="section-label">Quiénes Somos</span>
-            <h2 className="about__title">
-              Tecnología que impulsa <span>tu negocio</span>
-            </h2>
-            <div className="blue-line" style={{ margin: '20px 0' }} />
-            <p className="about__text">
-              <strong>Nexo Software SPA</strong> es una empresa chilena especializada en el desarrollo
-              de software a medida. Nacimos con la convicción de que la tecnología debe ser una
-              herramienta accesible y efectiva para toda organización, sin importar su tamaño.
+          <figure className="about__quote">
+            <blockquote>
+              <span className="about__quote-mark" aria-hidden="true">“</span>
+              La experiencia del usuario y la seguridad de sus datos no son
+              extras — son la base. Todo lo demás se construye encima.
+            </blockquote>
+            <figcaption>
+              <div className="about__author">
+                {photoFailed ? (
+                  <div className="about__avatar about__avatar--placeholder" aria-hidden="true">
+                    TV
+                  </div>
+                ) : (
+                  <img
+                    src="/founder.jpg"
+                    alt="Tomás Vergara, fundador de Nexo Software"
+                    className="about__avatar"
+                    onError={() => setPhotoFailed(true)}
+                    loading="lazy"
+                  />
+                )}
+                <div className="about__author-info">
+                  <p className="about__author-name">Tomás Vergara</p>
+                  <p className="about__author-role">Fundador · Nexo Software SPA</p>
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+
+          <div className="about__text">
+            <p>
+              <strong>Nexo Software</strong> es un estudio independiente con base en
+              Quillota. Construyo software a medida para empresas que necesitan
+              algo más serio que un template — plataformas SaaS, sistemas POS,
+              aplicaciones móviles y landings que efectivamente convierten.
             </p>
-            <p className="about__text">
-              Somos un equipo de ingenieros y diseñadores apasionados que trabajamos de cerca con
-              nuestros clientes para entender sus procesos, identificar oportunidades de mejora y
-              construir soluciones que realmente marquen la diferencia en su operación diaria.
+            <p>
+              Trabajo de cerca con cada cliente, sin intermediarios. Eso significa
+              que la persona con la que conversas el alcance es la misma que
+              escribe el código y la que va a estar disponible cuando algo falle
+              en producción.
             </p>
-            <p className="about__text">
-              Creemos en la transparencia, la comunicación constante y el código limpio. Cada
-              proyecto que desarrollamos lleva el respaldo de buenas prácticas de ingeniería y
-              un compromiso real con los resultados de nuestros clientes.
+            <p>
+              Si tu proyecto necesita rigor técnico, transparencia en los plazos
+              y código que vas a poder mantener en cinco años,{' '}
+              <a href="#contacto" className="link-inline">conversemos</a>.
             </p>
           </div>
+
+          <ul className="about__principles">
+            <li>
+              <span className="about__principles-num">·01</span>
+              <span>UX como punto de partida, no como capa final.</span>
+            </li>
+            <li>
+              <span className="about__principles-num">·02</span>
+              <span>Seguridad por defecto: cifrado, auditoría y backups.</span>
+            </li>
+            <li>
+              <span className="about__principles-num">·03</span>
+              <span>Código mantenible, documentado y testeado.</span>
+            </li>
+            <li>
+              <span className="about__principles-num">·04</span>
+              <span>Plazos honestos. Si algo no se puede, se dice antes.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

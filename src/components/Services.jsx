@@ -1,57 +1,58 @@
-import {
-  Globe,
-  Smartphone,
-  Code2,
-  BrainCircuit,
-  Palette,
-  Wrench,
-} from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { serviceItems } from '../content/services';
+import { getWhatsAppLink } from '../config';
 import './Services.css';
-
-const serviceIcons = [Globe, Smartphone, Code2, BrainCircuit, Palette, Wrench];
-
-const services = serviceItems.map((service, index) => ({
-  ...service,
-  icon: serviceIcons[index],
-}));
 
 export default function Services() {
   const [ref, visible] = useScrollAnimation();
 
   return (
     <section id="servicios" className="services section">
-      <div className="noise-overlay" />
       <div className="container">
         <div className="section-header">
-          <span className="section-label">Nuestros Servicios</span>
-          <h2 className="section-title">Soluciones digitales para tu empresa</h2>
+          <span className="section-label">02 — Servicios</span>
+          <h2 className="section-title">
+            Lo que <em>construimos</em>.
+          </h2>
           <p className="section-subtitle">
-            Desde la idea hasta el deploy. Desarrollamos software que se adapta
-            perfectamente a los procesos y objetivos de tu negocio.
+            Cuatro disciplinas en las que tenemos experiencia real, no las que
+            quedan bonitas en un brochure.
           </p>
         </div>
 
-        <div className="services__grid" ref={ref}>
-          {services.map((service, i) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={service.title}
-                className={`services__card ${visible ? 'visible' : ''}`}
-                style={{ transitionDelay: `${i * 0.1}s` }}
+        <ul className={`services__list ${visible ? 'visible' : ''}`} ref={ref}>
+          {serviceItems.map((service, i) => (
+            <li
+              key={service.code}
+              className="services__item"
+              style={{ transitionDelay: `${i * 0.06}s` }}
+            >
+              <a
+                href={getWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="services__link"
               >
-                <div className="services__card-icon">
-                  <Icon size={26} strokeWidth={1.7} />
+                <span className="services__code">{service.code}</span>
+                <div className="services__body">
+                  <h3 className="services__title">{service.title}</h3>
+                  <p className="services__desc">{service.description}</p>
+                  <ul className="services__deliverables">
+                    {service.deliverables.map((d) => (
+                      <li key={d}>{d}</li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="services__card-title">{service.title}</p>
-                <p className="services__card-desc">{service.description}</p>
-                <div className="services__card-line" />
-              </div>
-            );
-          })}
-        </div>
+                <ArrowUpRight
+                  size={20}
+                  strokeWidth={1.4}
+                  className="services__arrow"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

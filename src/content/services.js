@@ -1,32 +1,30 @@
 export const serviceItems = [
   {
-    title: 'Desarrollo Web',
+    code: '01',
+    title: 'Plataformas SaaS',
     description:
-      'Creamos sitios web y aplicaciones web modernas, rápidas y escalables. Desde landing pages hasta plataformas complejas con React, Next.js y Node.js.',
+      'Aplicaciones web multitenant con autenticación, pagos, dashboards y APIs robustas. Pensadas para escalar sin convertirse en deuda técnica.',
+    deliverables: ['Multi-tenant', 'Pagos integrados', 'Dashboards', 'API REST/GraphQL'],
   },
   {
-    title: 'Apps Móviles',
+    code: '02',
+    title: 'Sistemas POS y Retail',
     description:
-      'Desarrollamos aplicaciones móviles nativas y multiplataforma para iOS y Android que entregan experiencias fluidas a tus usuarios.',
+      'Soluciones de punto de venta para minimarkets y comercio. Caja desktop, app móvil, panel admin y sincronización cloud — funcionan online y offline.',
+    deliverables: ['Caja Electron', 'Apps PWA', 'Transbank SDK', 'Sync offline'],
   },
   {
-    title: 'Software a Medida',
+    code: '03',
+    title: 'Apps móviles & desktop',
     description:
-      'Diseñamos e implementamos sistemas empresariales personalizados que se adaptan exactamente a los procesos y necesidades de tu negocio.',
+      'Aplicaciones nativas y multiplataforma con React Native, Expo y Electron. Misma base de código, experiencia consistente en cada dispositivo.',
+    deliverables: ['React Native', 'Expo', 'Electron', 'Releases CI/CD'],
   },
   {
-    title: 'Consultoría Tecnológica',
+    code: '04',
+    title: 'Landings de conversión',
     description:
-      'Te asesoramos para elegir las mejores tecnologías y arquitecturas para tu proyecto, minimizando riesgos y maximizando el retorno de inversión.',
-  },
-  {
-    title: 'Diseño UI/UX',
-    description:
-      'Creamos interfaces intuitivas y atractivas centradas en el usuario. Diseñamos la experiencia antes de escribir la primera línea de código.',
-  },
-  {
-    title: 'Soporte y Mantenimiento',
-    description:
-      'Ofrecemos soporte continuo, actualizaciones y mantenimiento preventivo para que tus sistemas funcionen sin interrupciones.',
+      'Sitios corporativos optimizados para captar leads. SEO local, CTAs directos a WhatsApp/email, y métricas reales de conversión desde el día uno.',
+    deliverables: ['SEO local', 'CTA optimizados', 'Analytics', 'Performance 100/100'],
   },
 ];
