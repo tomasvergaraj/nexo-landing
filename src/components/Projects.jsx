@@ -5,6 +5,25 @@ import './Projects.css';
 
 const projects = [
   {
+    id: 'hambuscador',
+    name: 'Hambuscador',
+    category: 'Webapp + PWA · Foodtech',
+    description:
+      'Plataforma comunitaria mobile-first para descubrir, calificar y compartir hamburgueserías en todo Chile. Búsqueda geográfica con PostGIS, mapa interactivo con tiles vectoriales propios, reseñas con fotos, perfiles públicos, sistema de seguidores y notificaciones push. PWA instalable con share target. 1.481 locales aprobados en las 16 regiones.',
+    tags: ['Next.js 15', 'React 19', 'TypeScript', 'PostgreSQL', 'PostGIS', 'Drizzle ORM', 'Auth.js', 'MapLibre', 'Cloudflare R2'],
+    features: [
+      'Búsqueda geo con PostGIS (ST_DWithin + índice GIST)',
+      'Mapa con clusters branded y PMTiles self-hosted',
+      'Reseñas con fotos, ratings y feed de notificaciones',
+      'PWA instalable con Web Push y share target',
+      'Claim flow: dueños reclaman y editan su local',
+      'Panel admin con moderación, claims y analytics',
+    ],
+    platform: 'Webapp + PWA Nacional',
+    logoSrc: '/hambuscador-logo.png',
+    logoAlt: 'Logo de Hambuscador',
+  },
+  {
     id: 'nexo-fitness',
     name: 'Nexo Fitness',
     category: 'SaaS · Salud & Deporte',

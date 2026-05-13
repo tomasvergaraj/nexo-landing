@@ -58,6 +58,14 @@ export const getEmailLink = (subject, body) => {
 };
 
 export const PRODUCT_ACTIONS = {
+  'hambuscador': [
+    {
+      label: 'Visitar Hambuscador',
+      url: 'https://hambuscador.cl',
+      kind: 'external',
+      newTab: true,
+    },
+  ],
   'nexo-fitness': [
     {
       label: 'Acceder a Nexo Fitness',
