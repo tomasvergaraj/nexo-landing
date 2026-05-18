@@ -99,4 +99,12 @@ export const PRODUCT_ACTIONS = {
       newTab: true,
     },
   ],
+  'fertomart-landing': [
+    {
+      label: 'Visitar sitio',
+      url: 'https://fertomart.cl/',
+      kind: 'external',
+      newTab: true,
+    },
+  ],
 };

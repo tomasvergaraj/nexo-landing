@@ -1,6 +1,8 @@
-import { ArrowUpRight, Mail } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import { PRODUCT_ACTIONS } from '../config';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { getTechIcon } from '../data/techIcons';
 import './Projects.css';
 
 const projects = [
@@ -29,7 +31,7 @@ const projects = [
     category: 'SaaS · Salud & Deporte',
     description:
       'Plataforma SaaS multitenant para administración integral de gimnasios. Múltiples tenants operando de forma aislada desde una misma instancia con gestión completa de clases, reservas, pagos y campañas de marketing.',
-    tags: ['React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'Stripe', 'MercadoPago'],
+    tags: ['React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'Stripe'],
     features: [
       'Dashboard con KPIs y alertas operativas',
       'Clases físicas, online e híbridas con reservas',
@@ -48,7 +50,7 @@ const projects = [
     category: 'Sistema de Ventas · Retail',
     description:
       'Sistema completo de punto de venta para minimarkets. Arquitectura multi-componente con app desktop Electron, app móvil PWA, panel de administración web, API backend y sincronización cloud opcional con Supabase.',
-    tags: ['Electron', 'React', 'Expo', 'React Native', 'FastAPI', 'PostgreSQL', 'Transbank'],
+    tags: ['Electron', 'React', 'Expo', 'FastAPI', 'PostgreSQL', 'Supabase'],
     features: [
       'Caja POS desktop (Electron, Windows/Linux)',
       'App móvil PWA para tablet y celular',
@@ -62,12 +64,32 @@ const projects = [
     logoAlt: 'Logo de Nexo POS',
   },
   {
+    id: 'fertomart-landing',
+    name: 'Fertomart',
+    category: 'Landing · Banquetería & Eventos',
+    description:
+      'Landing premium para una empresa de banquetería con 25 años de experiencia en la V Región. Galería con lightbox swipeable, reels de video estilo redes sociales, formulario que abre WhatsApp con la cotización armada, panel de reseñas Google y SEO local agresivo apuntado a Hijuelas, Quillota y toda la Quinta Región.',
+    tags: ['Astro', 'TypeScript', 'CSS3', 'Vercel'],
+    features: [
+      'Hero full-screen con foto del cordero al palo',
+      'Galería con carrusel mobile + lightbox con swipe',
+      'Reels de video lazy-loaded por viewport',
+      'Formulario → WhatsApp con mensaje listo',
+      'Schema.org LocalBusiness + FAQ + VideoObject',
+      'Panel de reseñas Google integrado',
+    ],
+    platform: 'Landing Page Corporativa',
+    logoSrc: '/fertomart-logo.svg',
+    logoAlt: 'Logo de Fertomart',
+    logoBackground: '#0F0E0C',
+  },
+  {
     id: 'bugueno-hormigones',
     name: 'Bugueño Hormigones',
     category: 'Landing · Construcción',
     description:
       'Landing corporativa orientada a captar cotizaciones para una planta certificada de hormigón en Hijuelas, con foco en SEO local, confianza comercial y conversión desde WhatsApp para toda la Quinta Región.',
-    tags: ['React', 'Vite', 'SEO Local', 'Responsive', 'WhatsApp'],
+    tags: ['React', 'Vite', 'CSS3', 'WhatsApp'],
     features: [
       'Landing enfocada en cotización rápida',
       'Posicionamiento local para Hijuelas y Quinta Región',
@@ -105,8 +127,74 @@ const actionIcons = {
   whatsapp: WhatsAppIcon,
 };
 
+function TechTag({ name }) {
+  const iconUrl = getTechIcon(name);
+  return (
+    <span className="projects__tag">
+      {iconUrl && (
+        <img
+          src={iconUrl}
+          alt=""
+          className="projects__tag-icon"
+          width="14"
+          height="14"
+          loading="lazy"
+          aria-hidden="true"
+        />
+      )}
+      <span>{name}</span>
+    </span>
+  );
+}
+
 export default function Projects() {
   const [ref, visible] = useScrollAnimation();
+  const trackRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
+  // Trackea qué tarjeta es la "actual" según el scroll del carrusel.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const update = () => {
+      const { scrollLeft, clientWidth, scrollWidth } = track;
+      setCanPrev(scrollLeft > 8);
+      setCanNext(scrollLeft + clientWidth < scrollWidth - 8);
+      // Detecta la tarjeta más cercana al inicio del viewport
+      const cards = Array.from(track.querySelectorAll('.projects__card'));
+      let best = 0;
+      let bestDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(card.offsetLeft - scrollLeft);
+        if (dist < bestDist) {
+          best = i;
+          bestDist = dist;
+        }
+      });
+      setActiveIndex(best);
+    };
+    update();
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      track.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
+  const scrollTo = (index) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelectorAll('.projects__card')[index];
+    if (card) {
+      track.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+    }
+  };
+
+  const handlePrev = () => scrollTo(Math.max(0, activeIndex - 1));
+  const handleNext = () => scrollTo(Math.min(projects.length - 1, activeIndex + 1));
 
   return (
     <section id="proyectos" className="projects section">
@@ -122,80 +210,116 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className={`projects__grid ${visible ? 'visible' : ''}`} ref={ref}>
-          {projects.map((project, i) => {
-            const actions = PRODUCT_ACTIONS[project.id] ?? [];
+        <div className={`projects__carousel ${visible ? 'visible' : ''}`} ref={ref}>
+          <button
+            type="button"
+            className="projects__nav projects__nav--prev"
+            onClick={handlePrev}
+            disabled={!canPrev}
+            aria-label="Proyecto anterior"
+          >
+            <ChevronLeft size={18} />
+          </button>
 
-            return (
-              <article
-                key={project.id}
-                id={project.id}
-                className="projects__card"
-                style={{ transitionDelay: `${i * 0.1}s` }}
-              >
-                <div className="projects__card-header">
-                  <div
-                    className="projects__card-icon"
-                    style={{ backgroundColor: project.logoBackground }}
-                  >
-                    <img
-                      src={project.logoSrc}
-                      alt={project.logoAlt}
-                      className="projects__card-logo"
-                      loading="lazy"
-                      style={{ objectPosition: project.logoPosition }}
-                    />
-                  </div>
-                  <span className="projects__card-category">{project.category}</span>
-                </div>
+          <div className="projects__track" ref={trackRef} role="list">
+            {projects.map((project, i) => {
+              const actions = PRODUCT_ACTIONS[project.id] ?? [];
 
-                <div className="projects__card-body">
-                  <h3 className="projects__card-title">{project.name}</h3>
-                  <p className="projects__card-desc">{project.description}</p>
-
-                  <ul className="projects__features">
-                    {project.features.map((feature) => (
-                      <li key={feature}>
-                        <span className="projects__feature-mark" aria-hidden="true">+</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="projects__card-tags">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="projects__tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="projects__card-footer">
-                  <span className="projects__platform">{project.platform}</span>
-                  {actions.length ? (
-                    <div className="projects__actions">
-                      {actions.map((action) => {
-                        const Icon = actionIcons[action.kind] || ArrowUpRight;
-
-                        return (
-                          <a
-                            key={action.label}
-                            href={action.url}
-                            className="projects__access-link"
-                            target={action.newTab ? '_blank' : undefined}
-                            rel={action.newTab ? 'noopener noreferrer' : undefined}
-                            aria-label={action.label}
-                          >
-                            {action.label}
-                            <Icon size={14} />
-                          </a>
-                        );
-                      })}
+              return (
+                <article
+                  key={project.id}
+                  id={project.id}
+                  className="projects__card"
+                  role="listitem"
+                >
+                  <div className="projects__card-header">
+                    <div
+                      className="projects__card-icon"
+                      style={{ backgroundColor: project.logoBackground }}
+                    >
+                      <img
+                        src={project.logoSrc}
+                        alt={project.logoAlt}
+                        className="projects__card-logo"
+                        loading="lazy"
+                        style={{ objectPosition: project.logoPosition }}
+                      />
                     </div>
-                  ) : null}
-                </div>
-              </article>
-            );
-          })}
+                    <span className="projects__card-category">{project.category}</span>
+                  </div>
+
+                  <div className="projects__card-body">
+                    <h3 className="projects__card-title">{project.name}</h3>
+                    <p className="projects__card-desc">{project.description}</p>
+
+                    <ul className="projects__features">
+                      {project.features.map((feature) => (
+                        <li key={feature}>
+                          <span className="projects__feature-mark" aria-hidden="true">+</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="projects__card-tags">
+                      {project.tags.map((tag) => (
+                        <TechTag key={tag} name={tag} />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="projects__card-footer">
+                    <span className="projects__platform">{project.platform}</span>
+                    {actions.length ? (
+                      <div className="projects__actions">
+                        {actions.map((action) => {
+                          const Icon = actionIcons[action.kind] || ArrowUpRight;
+
+                          return (
+                            <a
+                              key={action.label}
+                              href={action.url}
+                              className="projects__access-link"
+                              target={action.newTab ? '_blank' : undefined}
+                              rel={action.newTab ? 'noopener noreferrer' : undefined}
+                              aria-label={action.label}
+                            >
+                              {action.label}
+                              <Icon size={14} />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    ) : null}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            className="projects__nav projects__nav--next"
+            onClick={handleNext}
+            disabled={!canNext}
+            aria-label="Proyecto siguiente"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+
+        <div className="projects__dots" role="tablist" aria-label="Selector de proyecto">
+          {projects.map((p, i) => (
+            <button
+              key={p.id}
+              type="button"
+              className={`projects__dot ${i === activeIndex ? 'is-active' : ''}`}
+              onClick={() => scrollTo(i)}
+              aria-label={`Ir al proyecto ${p.name}`}
+              aria-selected={i === activeIndex}
+              role="tab"
+            />
+          ))}
         </div>
       </div>
     </section>

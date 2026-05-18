@@ -3,21 +3,131 @@
   border-top: 1px solid var(--rule);
 }
 
-.projects__grid {
+/* ============================================
+   CARRUSEL — wrapper con flechas a los costados
+   ============================================ */
+.projects__carousel {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.projects__grid.visible {
+.projects__carousel.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
+.projects__nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast),
+              color var(--transition-fast),
+              opacity var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.projects__nav:hover:not(:disabled) {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.projects__nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.projects__nav:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   TRACK — strip horizontal con scroll-snap
+   ============================================ */
+.projects__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(50% - 12px);
+  gap: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0;
+  padding: 4px 4px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--mute) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects__track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.projects__track::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: 3px;
+}
+
+.projects__track::-webkit-scrollbar-thumb:hover {
+  background: var(--mute);
+}
+
+/* ============================================
+   DOTS — indicadores de posición debajo
+   ============================================ */
+.projects__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.projects__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: var(--rule);
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.projects__dot:hover {
+  background: var(--mute);
+  transform: scale(1.2);
+}
+
+.projects__dot.is-active {
+  background: var(--ink);
+  width: 24px;
+}
+
+.projects__dot:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   CARDS — sin cambios estructurales
+   ============================================ */
 .projects__card {
   background: var(--paper-card);
   border: 1px solid var(--rule);
@@ -25,16 +135,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color var(--transition-fast);
-}
-
-.projects__grid.visible .projects__card {
-  opacity: 1;
-  transform: translateY(0);
+  scroll-snap-align: start;
+  transition: border-color var(--transition-fast);
 }
 
 .projects__card:hover {
@@ -129,7 +231,7 @@
   font-weight: 400;
 }
 
-/* Tags */
+/* Tags — ahora con icono oficial al lado */
 .projects__card-tags {
   display: flex;
   flex-wrap: wrap;
@@ -140,14 +242,24 @@
 }
 
 .projects__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 500;
   color: var(--mute);
   background: transparent;
   border: 1px solid var(--rule);
-  padding: 3px 8px;
+  padding: 3px 8px 3px 6px;
   border-radius: 999px;
+}
+
+.projects__tag-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* Footer */
@@ -201,11 +313,25 @@
 }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .projects__grid {
+@media (max-width: 1100px) {
+  .projects__track {
+    grid-auto-columns: 70%;
+  }
+}
+
+@media (max-width: 760px) {
+  .projects__carousel {
     grid-template-columns: 1fr;
-    max-width: 600px;
-    margin: 0 auto;
+  }
+  .projects__nav {
+    display: none;
+  }
+  .projects__track {
+    grid-auto-columns: 88%;
+    gap: 16px;
+    /* Margen lateral para que la primera/última tarjeta no quede pegada al borde */
+    padding: 4px 16px 12px;
+    margin: 0 -16px;
   }
 }
 
