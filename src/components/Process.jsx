@@ -15,7 +15,7 @@ const steps = [
   {
     code: '03',
     title: 'Diseño',
-    desc: 'Wireframes y prototipos antes del código. Validamos UX y flujos críticos en pantalla, no en producción.',
+    desc: 'Wireframes y prototipos antes del código. Valido UX y flujos críticos en pantalla, no en producción.',
   },
   {
     code: '04',
@@ -41,7 +41,7 @@ export default function Process() {
     <section id="proceso" className="process section">
       <div className="container">
         <div className="section-header">
-          <span className="section-label">04 — Cómo trabajamos</span>
+          <span className="section-label">04 — Cómo trabajo</span>
           <h2 className="section-title">
             De la primera llamada al <em>deploy</em>.
           </h2>

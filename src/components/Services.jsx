@@ -13,10 +13,10 @@ export default function Services() {
         <div className="section-header">
           <span className="section-label">02 — Servicios</span>
           <h2 className="section-title">
-            Lo que <em>construimos</em>.
+            Lo que <em>construyo</em>.
           </h2>
           <p className="section-subtitle">
-            Cuatro disciplinas en las que tenemos experiencia real, no las que
+            Cuatro disciplinas en las que tengo experiencia real, no las que
             quedan bonitas en un brochure.
           </p>
         </div>

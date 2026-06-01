@@ -23,7 +23,7 @@ export default function Hero() {
         </h1>
 
         <p className="hero__subtitle">
-          Diseñamos y desarrollamos plataformas SaaS, sistemas POS y aplicaciones
+          Diseño y desarrollo plataformas SaaS, sistemas POS y aplicaciones
           móviles. Sin templates, sin atajos, sin teatro.
         </p>
 

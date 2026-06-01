@@ -8,7 +8,7 @@ const benefits = [
   },
   {
     title: 'Plazos honestos',
-    desc: 'Si algo no se puede entregar a tiempo, te aviso antes — no después. Trabajamos con sprints cortos para que veas avances reales cada semana.',
+    desc: 'Si algo no se puede entregar a tiempo, te aviso antes — no después. Trabajo con sprints cortos para que veas avances reales cada semana.',
   },
   {
     title: 'Comunicación directa',
@@ -40,7 +40,7 @@ export default function Benefits() {
             Diferencias <em>concretas</em>.
           </h2>
           <p className="section-subtitle">
-            No promesas vagas — seis cosas que efectivamente hacemos diferente.
+            No promesas vagas — seis cosas que efectivamente hago diferente.
           </p>
         </div>
 

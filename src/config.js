@@ -6,7 +6,7 @@
 export const SITE_CONFIG = {
   companyName: 'Nexo Software',
   tagline: 'Desarrollo de Software a Medida',
-  slogan: 'Conectamos tu negocio con la tecnología que necesita',
+  slogan: 'Conecto tu negocio con la tecnología que necesita',
   logoPath: '/nexo-logo.png',
 };
 

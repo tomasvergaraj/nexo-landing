@@ -6,7 +6,7 @@ import './Navbar.css';
 
 const navLinks = [
   { label: 'Inicio', href: '#hero' },
-  { label: 'Nosotros', href: '#nosotros' },
+  { label: 'Quién soy', href: '#nosotros' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Proceso', href: '#proceso' },
