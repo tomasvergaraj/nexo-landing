@@ -83,6 +83,25 @@ const projects = [
     logoAlt: 'Logo de NexoCotiza',
   },
   {
+    id: 'nexo-transcriptor',
+    name: 'Nexo Transcriptor',
+    category: 'Webapp · Transcripción de audio',
+    description:
+      'Herramienta fullstack que transcribe audio a texto con Whisper (faster-whisper) y lo exporta a Word. Backend FastAPI con cola persistente Redis + Celery, progreso real por segmento y edición del texto en el navegador. Autohospedable con Docker: el audio se procesa en el servidor y se borra al terminar.',
+    tags: ['React', 'TypeScript', 'FastAPI', 'faster-whisper', 'Redis', 'Celery', 'Docker'],
+    features: [
+      'Transcripción con Whisper (faster-whisper / CTranslate2)',
+      'Cola persistente Redis + Celery, escalable por workers',
+      'Progreso real por segmento con vista previa en vivo',
+      'Edición del texto y exportación a Word (.docx)',
+      'Cancelación y recuperación de trabajos',
+      'Despliegue con Docker + Caddy (TLS automático)',
+    ],
+    platform: 'Webapp Fullstack (Docker)',
+    logoSrc: '/nexo-transcriptor-logo.png',
+    logoAlt: 'Logo de Nexo Transcriptor',
+  },
+  {
     id: 'fertomart-landing',
     name: 'Fertomart',
     category: 'Landing · Banquetería & Eventos',

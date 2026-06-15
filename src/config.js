@@ -99,6 +99,14 @@ export const PRODUCT_ACTIONS = {
       newTab: true,
     },
   ],
+  'nexo-transcriptor': [
+    {
+      label: 'Visitar Nexo Transcriptor',
+      url: 'https://transcribe.nexosoftware.cl',
+      kind: 'external',
+      newTab: true,
+    },
+  ],
   'bugueno-hormigones': [
     {
       label: 'Visitar sitio',
