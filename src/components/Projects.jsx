@@ -64,6 +64,25 @@ const projects = [
     logoAlt: 'Logo de Nexo POS',
   },
   {
+    id: 'nexocotiza',
+    name: 'NexoCotiza',
+    category: 'Webapp · Cotizaciones',
+    description:
+      'Herramienta web para crear cotizaciones profesionales y descargarlas en PDF o Word, 100% en el navegador. Sin registro y sin servidor: los datos de la empresa, el logo y el borrador viven en el dispositivo (IndexedDB). Pensada para pymes y freelancers en Chile, con CLP, RUT (módulo 11) e IVA tratados como ciudadanos de primera clase.',
+    tags: ['Astro', 'React', 'TypeScript', 'TailwindCSS', 'IndexedDB', 'PWA'],
+    features: [
+      'Datos de empresa con logo y guardado local',
+      'Tabla de ítems con neto, IVA y total automáticos',
+      'RUT chileno validado (módulo 11) y formato CLP',
+      'Exportación a PDF y a Word (.docx)',
+      'Historial de cotizaciones en el navegador',
+      'PWA instalable, funciona offline',
+    ],
+    platform: 'Webapp 100% en el navegador',
+    logoSrc: '/nexocotiza-logo.png',
+    logoAlt: 'Logo de NexoCotiza',
+  },
+  {
     id: 'fertomart-landing',
     name: 'Fertomart',
     category: 'Landing · Banquetería & Eventos',

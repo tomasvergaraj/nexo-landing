@@ -91,6 +91,14 @@ export const PRODUCT_ACTIONS = {
       newTab: false,
     },
   ],
+  'nexocotiza': [
+    {
+      label: 'Visitar NexoCotiza',
+      url: 'https://cotiza.nexosoftware.cl',
+      kind: 'external',
+      newTab: true,
+    },
+  ],
   'bugueno-hormigones': [
     {
       label: 'Visitar sitio',
